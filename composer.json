@@ -1,0 +1,14 @@
+{
+    "name": "commonknowledge/pluto-press-logger",
+    "description": "Unify logging across Pluto Press components.",
+    "type": "library",
+    "require": {
+        "php": "^8.0",
+        "monolog/monolog": "^1.27"
+    },
+    "autoload": {
+        "psr-4": {
+            "CommonKnowledge\\Monolog\\": "src/"
+        }
+    }
+}
