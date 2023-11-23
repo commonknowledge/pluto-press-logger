@@ -17,7 +17,16 @@ class LoggerFactory
     {
         $logger = new Logger($name);
         if (!$log_dir) {
-            $log_dir = dirname(__DIR__, 4) . '/logs';
+            $abspath = constant("ABSPATH");
+            if ($abspath !== null) {
+                // Root directory assuming the parent project uses
+                // Roots Bedrock
+                $log_dir = dirname($abspath, 2) . '/logs';
+            } else {
+                // Root directory assuming this library is installed in the
+                // standard vendor location
+                $log_dir = dirname(__DIR__, 4) . '/logs';
+            }
         }
         $logger->pushHandler(new RotatingFileHandler($log_dir . '/' . $name . '.log', maxFiles: 32));
 
